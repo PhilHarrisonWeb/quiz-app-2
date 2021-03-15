@@ -5,20 +5,23 @@ const generateQuestionEl = (item) => {
 
 }
 
-const generateAnswerEl = (item) => {
+const generateAnswerEl = (item, id) => {
     // create div
     const answerDiv = document.createElement('div')
+
+    //find index of currently processed item
 
     // create answerEL
     const answerEl = document.createElement('input')
     answerEl.setAttribute('type', 'radio')
-    answerEl.setAttribute('name', 'question1')
+    answerEl.setAttribute('id', item)
+    answerEl.setAttribute('value', item)
+    answerEl.setAttribute('name', id)
 
     const label = document.createElement('label')
     // answerEl.setAttribute('for', )
     label.innerHTML = item
-
-
+    label.htmlFor = item
     answerDiv.appendChild(label)
     answerDiv.appendChild(answerEl)
 

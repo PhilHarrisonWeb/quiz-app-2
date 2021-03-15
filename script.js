@@ -1,25 +1,29 @@
 const questions = [{
     question: 'How many members of The Beatles were there?',
     answers: ['Two', 'Three', 'Four'],
-    correct: 'Four'
+    correct: 'Four',
+    id: uuidv4()
 }, {
-    question: 'From which country did Abba come from?',
+    question: 'Which country did Abba come from?',
     answers: ['Sweden', 'Denmark', 'Finland'],
-    correct: 'Sweden'
+    correct: 'Sweden',
+    id: uuidv4()
 }, {
     question: 'Who had a hit with "Rocket Man"?',
     answers: ['Neil Young', 'Eric Clapton', 'Elton John'],
-    correct: 'Elton John'
+    correct: 'Elton John',
+    id: uuidv4()
 }]
 
-// here i could generate a random number 
-// let index = 1
-
+let score = 0
 
 // NEED TO PERFORM THE BELOW FOR EVERY QUESTION IN THE ARRAY
 
 const genQueAns = (array) => {
     array.forEach((item) => {
+
+        // uniqueID becomes current items uuid
+        let uniqueID = item.id
 
         // create root DIV
         const rootDiv = document.createElement('div')
@@ -29,10 +33,9 @@ const genQueAns = (array) => {
 
         //render answers using forEach
         item.answers.forEach((item) => {
-            rootDiv.appendChild(generateAnswerEl(item))
+            rootDiv.appendChild(generateAnswerEl(item, uniqueID))
 
         })
-
         // append to main-question-container
         document.querySelector('#main-question-container').appendChild(rootDiv)
     })
