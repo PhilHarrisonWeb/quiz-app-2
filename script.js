@@ -39,18 +39,22 @@ let runningTotal = 0
 genQueAns(questions)
 
 const getResults = () => {
+    // i is generated to include within selector to target named groups
     for (let i = 0; i < questions.length; i++) {
+        // returns nodelist containing items with a name matching selector
         const returnedthing = document.getElementsByName(`item_${i}`)
         returnedthing.forEach((item) => {
             if (item.checked && item.id == questions[i].correct) {
-                console.log('scooby doo!')
+                runningTotal++
             }
         })
     }
 }
 
-
-
 document.querySelector('#show-results').addEventListener('click', (e) => {
     (getResults())
+    const resultDOM = document.querySelector('#results')
+    const totalPercentage = (runningTotal / questions.length) * 100
+    resultDOM.textContent = `Your final score is ${totalPercentage.toFixed(0)}%!`
+    runningTotal = 0
 })
