@@ -5,7 +5,7 @@ const generateQuestionEl = (item) => {
 
 }
 
-const generateAnswerEl = (item, id) => {
+const generateAnswerEl = (item, index) => {
     // create div
     const answerDiv = document.createElement('div')
 
@@ -16,7 +16,7 @@ const generateAnswerEl = (item, id) => {
     answerEl.setAttribute('type', 'radio')
     answerEl.setAttribute('id', item)
     answerEl.setAttribute('value', item)
-    answerEl.setAttribute('name', id)
+    answerEl.setAttribute('name', `item_${index}`)
 
     const label = document.createElement('label')
     // answerEl.setAttribute('for', )
